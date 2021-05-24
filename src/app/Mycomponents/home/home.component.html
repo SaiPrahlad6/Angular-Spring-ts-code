@@ -1,0 +1,85 @@
+<h1 style="color: brown; align-items: center">College Details</h1>
+<div style="width: 50%; display: block; margin: 5px auto">
+  <nav class="navbar">
+    <input
+      class="form-control"
+      type="text"
+      name="name"
+      [(ngModel)]="first_name"
+      (ngModelChange)="search()"
+      placeholder="Enter the College name"
+    />
+  </nav>
+  <div style="display: flex; justify-content: space-evenly">
+    <div style="width: 30%">
+      <label for="cities">
+        <strong> City: </strong>
+      </label>
+      <select
+        style="display: block"
+        id="cities"
+        [(ngModel)]="college_name"
+        (ngModelChange)="dropdown()"
+      >
+        <option *ngFor="let items of StudentList" [value]="items.city">
+          {{ items.city }}
+        </option>
+      </select>
+    </div>
+
+    <div style="width: 30%">
+      <label for="fac"> <strong>Facilites: </strong> </label>
+      <select id="fac" [(ngModel)]="fac_item" (ngModelChange)="facili()">
+        <option *ngFor="let fac of temp" [value]="fac">
+          <input type="checkbox" />{{ fac }}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="flag; else notdrop">
+  <table id="users">
+    <tr>
+      <th *ngFor="let column of headers">
+        {{ column }}
+      </th>
+    </tr>
+
+    <tr *ngFor="let row of SearchList">
+      <td *ngFor="let column of headers">
+        {{ row[column] }}
+      </td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="fac_flag || !flag">
+  <table id="users">
+    <tr>
+      <th *ngFor="let column of headers">
+        {{ column }}
+      </th>
+    </tr>
+
+    <tr *ngFor="let row of fac_List">
+      <td *ngFor="let column of headers">
+        {{ row[column] }}
+      </td>
+    </tr>
+  </table>
+</div>
+<ng-template #notdrop>
+  <table id="users">
+    <tr>
+      <th *ngFor="let column of headers">
+        {{ column }}
+      </th>
+    </tr>
+
+    <tr *ngFor="let row of StudentList">
+      <td *ngFor="let column of headers">
+        {{ row[column] }}
+      </td>
+    </tr>
+  </table>
+</ng-template>

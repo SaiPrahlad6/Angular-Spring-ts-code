@@ -4,13 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './Mycomponents/home/home.component'
+import { FormsModule } from '@angular/forms';
+// import {MatPaginatorModule} from '@angular/material/paginator';
+// import { MatChipsModule } from '@angular/material/chips';
+
+// import { InterceptorModule} from './interceptor.module';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
